@@ -3,8 +3,7 @@ import java.util.EmptyStackException;
 class Stack {
     private final int MAX = 50;
     private int size;
-    private int[] data = new int[MAX]; // Maximum size of Stack
-    private int count = 0;
+    private int capacity = 0;
     private Object[] stackArr;
 
     Stack () {
@@ -18,8 +17,8 @@ class Stack {
     }
 
     void push(Object object) {
-        if (count < data.length - 1) {
-            stackArr[++count] = object;
+        if (capacity < stackArr.length - 1) {
+            stackArr[++capacity] = object;
         }
         else {
             throw new StackOverflowError("Stack Overflow");
@@ -27,12 +26,16 @@ class Stack {
     }
 
     int size () {
-        return count;
+        return size;
+    }
+
+    int currentCapacity () {
+        return capacity;
     }
 
     void pop() {
         if(!isEmpty()) {
-            count--;
+            capacity--;
         }
         else {
             throw new EmptyStackException();
@@ -40,13 +43,12 @@ class Stack {
     }
 
     boolean isEmpty() {
-        return count < 1;
+        return capacity < 1;
     }
 
     Object top (){
         if (!isEmpty()) {
-            Object top = stackArr[count];
-            return top;
+            return stackArr[capacity];
         }
         else {
             throw new ArrayIndexOutOfBoundsException();
@@ -54,6 +56,6 @@ class Stack {
     }
 
     void clear() {
-        count = -1;
+        capacity = -1;
     }
 }

@@ -14,7 +14,7 @@ public class StackTest {
     @Test
     public void addToStack () {
         testStack.push(1);
-        Assert.assertEquals(1, testStack.size());
+        Assert.assertEquals(1, testStack.currentCapacity());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class StackTest {
         testStack.push(2);
         testStack.push(3);
         testStack.push(4);
-        Assert.assertEquals(4, testStack.size());
+        Assert.assertEquals(4, testStack.currentCapacity());
     }
 
     @Test
@@ -71,7 +71,16 @@ public class StackTest {
         testStack.push(2);
         testStack.push(2);
 
-        Assert.assertEquals(3, testStack.size());
+        Assert.assertEquals(10, testStack.size());
+    }
+
+    @Test
+    public void getCapacity () {
+        testStack.push(1);
+        testStack.push(2);
+        testStack.push(2);
+
+        Assert.assertEquals(3, testStack.currentCapacity());
     }
 
     @Test
@@ -80,7 +89,8 @@ public class StackTest {
         testStack.push("B");
         testStack.push("c");
         testStack.push("d");
-        Assert.assertEquals(4, testStack.size());
+
+        Assert.assertEquals(4, testStack.currentCapacity());
     }
 
     @Test
@@ -90,6 +100,6 @@ public class StackTest {
         testStack.push(8);
         testStack.push("d");
 
-        Assert.assertEquals(4, testStack.size());
+        Assert.assertEquals(4, testStack.currentCapacity());
     }
 }
